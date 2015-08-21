@@ -19,7 +19,7 @@ docker_repo:
         - pkg: docker-python-apt
 
 docker-pkg:
-  pkg.latest:
+  pkg.installed:
     - name: 'docker-engine'
     - require:
       - pkg: docker-dependencies
