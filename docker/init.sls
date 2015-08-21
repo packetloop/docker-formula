@@ -7,20 +7,20 @@ docker-dependencies:
     - pkgs:
       - iptables
       - ca-certificates
-      - lxc
 
 docker_repo:
     pkgrepo.managed:
-      - repo: 'deb http://get.docker.io/ubuntu docker main'
+      - repo: 'deb https://apt.dockerproject.org/repo ubuntu-trusty main'
       - file: '/etc/apt/sources.list.d/docker.list'
       - key_url: salt://docker/docker.pgp
       - require_in:
-          - pkg: lxc-docker
+          - pkg: docker-pkg
       - require:
         - pkg: docker-python-apt
 
-lxc-docker:
+docker-pkg:
   pkg.latest:
+    - name: 'docker-engine'
     - require:
       - pkg: docker-dependencies
 
